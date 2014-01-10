@@ -1,0 +1,117 @@
+//users
+[
+{ "_id":"Object(123123123123)", "name":"用户名称", "pass":"用户密码MD5","qq":"20126161","email":"yusongone@gmail.com"}
+{ "_id":"Object(123123123123)","name":"用户名称", "pass":"用户密码MD5","qq":"", }
+{ "_id":"Object(123123123123)", "name":"用户名称", "pass":"用户密码MD5","qq":"","customerListId":"Object(123456789123)"}
+]
+//studios
+{
+    "_id":"objectId(237294829345)",
+    "name":"fesc",
+    "logo":"abcd",
+    "admin":"234919234012",
+    "manager":[
+            {"userId":"1342918283844512"},
+            {"userId":"1342918283844512"},
+            {"userId":"1342918283844512"}
+        ],
+    "customerListId":"object(1234313452345)"
+}
+
+//image_libs
+[
+{ "_id":"Object(123123)", "images":[{"fileId":"Object("图片ID")"}, {"fileId":"Object("图片ID")"}] }
+{ "_id":"Object(123123)","userId":"Object(023495827345234584)","cusInfoId":"object(081234123465923847548)", "images":[{"fileId":"Object("图片ID")"}, {"fileId":"Object("图片ID")"}] }
+]
+
+//studio
+[
+{
+    "_id":"object(543342311234986)",
+    "customerList":[{"cusId":"Object(123453123)"},{"cusId":"Object(123456789)"}]
+    "name":"abcd",
+    "admin":"object(12399923847583948452345)",
+    "manager":[
+            {"userId":"12382371623471727374"},
+            {"userId":"12382371623471727374"},
+            {"userId":"12382371623471727374"}
+        ]
+    }
+]
+
+//customerInfo
+{
+    "_id":"object(234235235234234)",
+    productLists:"Object(12470245934812347)",
+    studio:"Object(123123123123)",//studio id;
+    reserverMessage:"abc",
+    address:"",
+    bindUser:userId,
+    menber:{
+        boy:{
+            name:"abc",
+            phone:"13919191919",
+            "qq":"12442351"
+        },
+        girl:{
+            name:"bcd",
+            phone:"effccs"
+        }
+    }
+}
+
+//Order
+{
+    "_id":"object(123952348323456)",
+    customerInfoId:"object(234235235234234)",
+    bindUser:userId,
+    imagesLibs:"Object(134922349595239)",
+    design:"Object(134922349595239)",
+    products:[
+        {"_id":"objectId('asdffefefef')","imgPath":"asdf","count":"0"},
+        {"pid":"objectId('asdffefefef')"},
+        {"pid":"objectId('asdffefefef')","selectPhotos":["objectId('asdfefeaefa1243122312341234')"]}
+        ]
+}
+
+
+//table fs.files and fs.chunks
+{
+    "_id":"object(123952348323456)",
+    "metadata":{
+        originalImageId:objectId(123023457934845),
+        size:50,
+        type:"fill"
+    },
+    md5:"asdfaweff9879sf79as8ef9"
+}
+
+// creator productList
+{
+    "_id":"object(123235467)",
+    "userId":"object(121234712347612032934)",
+    "products":[
+        {"_id":"object(1239342739234592823474)","productId":"object('1235234624573455245')","":""},
+        { "_id":"object(12348712023471234)","imgPath":"/private_images/125472831239348293423", "size":"20*15", "price":1200, "description":"asdf easda ewqw esadf asef aef" }
+        ],
+    "category":{
+        "big":[{id:"",name:""},{}],
+        "small":[{id:"",name:""},{}]
+    },
+    "kit":{
+        "testOne":[{},{}]
+    }
+}
+
+//albums
+{
+    "_id":"Object(123923448234)",
+    "userId":"Object(123123123123)",
+    "name":"十月的回忆",
+    "photos":[
+            "123923292342341",
+            "993298457234592345",
+            "123923292342341"
+        ]
+}
+

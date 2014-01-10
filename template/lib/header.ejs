@@ -1,0 +1,11 @@
+<title><%=title%></title>
+<meta content="text/html; charset=UTF-8" http-equiv="content-type">
+<link href="/css/vendor/font-awesome.min.css?v=<%=css_version%>" rel="stylesheet">
+<link href="/css/common.css?v=<%=css_version%>" rel="stylesheet">
+<script src="/js/vendor/jquery-1.9.0rc1.js?v=<%=js_version%>"></script>
+<%if(locals.P_css){%>
+    <link href="/css/<%=P_css+".css"%>?v=<%=css_version%>" rel="stylesheet">
+<%}%>
+<%if(locals.P_js){%>
+    <script src="/js/<%=P_js+".js"%>?v=<%=js_version%>"></script>
+<%}%>

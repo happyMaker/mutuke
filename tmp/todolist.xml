@@ -1,0 +1,10 @@
+<div class="nav">
+    <div class="page_title"><%=title%></div> 
+    <div class="bottom_line"></div>
+    <%var d=[ {name:"客户管理",href:"/b/customer"}, {name:"图片库",href:"/b/image_library"}, {name:"模板管理",href:"#"}, {name:"个人信息",href:"/profile"}, {name:"选片列表",href:"/b/my"}, {name:"提醒",herf:"/abc"}];%>
+    <ul class="nav_list">
+        <%for(var i=0;i<d.length;i++){var temp=d[i];%>
+            <li <%if(title==temp.name){%>class="on"<%}%>><a href="<%=temp.href%>"><%=temp.name%></a></li>
+        <%}%>
+    </ul>
+</div>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <% include lib/header %>
+        <link href="/css/custom-theme/jquery-ui-1.10.3.custom.min.css?v=<%=css_version%>" rel="stylesheet" />
+        <link href="/css/first_login.css?v=<%=css_version%>" rel="stylesheet" />
+        <script src="/js/vendor/jquery.ui.widget.js"></script>  
+        <script src="/js/vendor/jquery-ui.js"></script>  
+        <script src="/js/vendor/jquery.iframe-transport.js"></script>  
+        <script src="/js/vendor/jquery.fileupload.js"></script>  
+        <script src="/js/vendor/jquery-ui.js"></script>
+        <script src="/js/first_login.js"></script>
+    </head>
+    <body class="customer">
+        <% include lib/toplink%>
+        <div class="right_area">
+            <div class="topBox">
+                <div class="logoBox">LOGO</div>
+                <div class="buttonBox">
+                </div>
+            </div>
+            <div class="toolBar">
+            </div>
+            <div class="bottom_line"></div>
+            <div class="content">
+                <div class="title">第一次登陆</div>
+                <p class="info">您好，系统检测您是第一次使用**账户登陆，如果您曾经使用过**以外的账户登陆过本站，您可绑定旧账号，或者，这将是一个新账号，会是一个全新的开始</p>
+                <div class="btnBox" >
+                    <div class="btnBlue" id="newId">使用新账号</div>
+                    <div class="btnBlue">绑定其他账号</div>
+                </div>
+            </div>
+        </div>
+        <% include lib/footer %>
+    </body>
+</html>

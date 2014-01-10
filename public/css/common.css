@@ -1,0 +1,258 @@
+*{padding:0;margin:0;list-style:none;}
+body{color:#666;font-size:14px;font-family:'Open Sans', 'lucida grande', 'Segoe UI', arial, verdana, 'lucida sans unicode', tahoma, sans-serif;font-family:"Hiragino Sans GB", "Microsoft YaHei", sans-serif;}
+.page{width:980px;margin:0 auto;}
+.content{ min-height:680px; }
+img{border:none;}
+.hand{cursor:pointer;}
+input{color:#444;}
+a{cursor:pointer;color:#09f;}
+.hide{display:none;}
+.text{float:left;height:24px;font-size:14px;border-radius:3px;text-indent:5px;line-height:24px;border:1px solid #ddd;}
+.toplink{position:absolute;top:0px;left:0px;width:100%;color:#999;}
+.links{margin:5px auto 0;font-size:12px;width:980px;text-align:right;}
+.links li{display:inline;margin-left:10px;}
+.links li a{ text-decoration: none; color:#666;}
+.links li a:hover{color:#333;text-decoration:underline;}
+.top{z-index:99999;}
+.textOver{
+    overflow: hidden;
+    white-space: nowrap;
+    display: block;
+    text-overflow: ellipsis;
+    -ms-text-overflow: ellipsis;
+    -webkit-text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+}
+.fileBtnBox{
+    position:relative;
+    overflow:hidden;
+    width:90px;
+    float:right;
+}
+.file{
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    opacity: 0;
+    -ms-filter: 'alpha(opacity=0)';
+    direction: ltr;
+    cursor: pointer;
+    cursor: pointer;
+    width: 80px;
+    height: 30px;
+}
+
+.btnSmall i,.btnBlue i,.btnRed i{
+    margin-right:5px;
+}
+.btnSmall,.btnBlue,.btnRed{
+    cursor:pointer;
+    height:24px;
+    line-height:24px;
+    font-size:12px;
+    padding:0 10px;
+    border-radius: 5px;
+    float:left;
+    border:none;
+    text-align:center;
+}
+.btnSmall.disable,.btnBlue.disable,.btnRed.disable{
+    background:#ddd;
+    color:#eee;
+}
+.btnSmall.disable:hover,.btnBlue.disable:hover,.btnRed.disable:hover{
+    background:#ddd;
+    color:#eee;
+}
+.btnSmall{
+    text-align:center;
+    background:#ddd;
+}
+.btnBlue:hover{
+    background:#5588aa;
+}
+.btnBlue{
+    color:#fff;
+    background:#456590;
+}
+.btnRed:hover{
+    background:#F0004A;
+}
+.btnRed{
+    color:#fff;
+    background:#f26;
+}
+
+.logoBox{
+    line-height:50px;
+    float:left;
+    font-size:32px;
+    margin-left:20px;
+    /*background:url("https://www.dropbox.com/static/images/header/header_logo.png");*/
+    background:url("/img/logo1.png") no-repeat;
+    background-size:40px;
+    width:40px;
+    height:40px;
+    text-indent:50px;
+    overflow:hidden;
+}
+
+.nav{
+    width:149px;
+    height:100%;
+    float:left;
+    /*-webkit-box-shadow: 7px -7px 7px -8px;
+    box-shadow: 7px -7px 7px -8px;
+    */
+    min-height:400px;
+}
+.nav .on{
+    display:none;
+}
+.nav .page_title{
+    margin-top:100px;
+    height: 30px;
+    line-height:32px;
+    padding-right:10px;
+    text-align:right;
+    font-size:18px;
+    border-right:15px solid #ff8a2f;
+    font-weight:bold;
+}
+.nav .nav_list{
+    float:left;
+    margin-top:10px;
+    width:100%;
+}
+.nav .nav_list li{
+    text-align:right;
+    margin-right:10px;
+    padding:3px 0;
+}
+.nav .nav_list li:hover a{
+    border-right: 3px solid #fc0;
+    color:#222;
+    font-weight:bold;
+}
+.nav_list a{
+    border-right:3px solid #fff;
+    line-height:18px;
+    height:18px;
+    display:block;
+    padding-right:5px;
+    color:#666;
+    text-decoration:none;
+}
+.bottom_line{
+    width: 100%;
+    height:3px;
+    background: #fd8a3d;
+    margin-top: 1px;
+    float:left;
+}
+.right_area{float:right;width:830px;border-left:1px solid #eee;}
+
+.toolBar{
+    float:left;
+    width: 100%;
+    height: 30px;
+    background: #456590;
+}
+.topBox{
+    float:left;
+    height:50px;
+    width:100%;
+    margin-top:50px;
+}
+.buttonBox{
+    float:right;
+    width:690px;
+    height:30px;
+    margin-top:20px;
+}
+
+.right_area .buttonBox .btnBlue,
+.right_area .buttonBox .btnSmall{
+    float:right;
+}
+.right_area .content{
+    padding:10px;
+    float:left;
+}
+
+.footer{
+    width:100%;
+    height: 150px;
+    float: left;
+    border-top:1px solid #eee;
+}
+.alert{
+    color:red;
+}
+
+.icon_error_small{
+    display:block;
+    width:16px;
+    height:16px;
+    background:url("/img/icon_a.png") no-repeat;
+    background-position:0px 0px;
+}
+
+.icon_error_big{
+    display:block;
+    width:32px;
+    height:32px;
+    background:url("/img/icon_a.png") no-repeat;
+    background-position:-28px 0px;
+}
+.icon_ok_small{
+    display:block;
+    width:16px;
+    height:16px;
+    background:url("/img/icon_a.png") no-repeat;
+    background-position:0px -200px;
+}
+.icon_ok_big{
+    display:block;
+    width:32px;
+    height:32px;
+    background:url("/img/icon_a.png") no-repeat;
+    background-position:-28px -200px;
+}
+
+.ui-progressbar.progress{
+    height:20px;
+    line-height:20px;
+    margin:2px 0;
+    border:none;
+    color:black;
+    color:#666;
+}
+.ui-progressbar .proName{
+    font-size:12px;
+    float:left;
+    margin-left:5px;
+    width:150px;
+}
+.ui-progressbar .cancel,
+.ui-progressbar .resubmit {
+    display:none;
+    font-size:12px;
+    float:left;
+    width:35px;
+    text-align:center;
+    cursor:pointer;
+}
+.ui-progressbar.done{
+    color:#fff;
+}
+.ui-progressbar.done .ui-progressbar-value{
+    background:#00A011;
+}
+.ui-progressbar.fail{
+    color:#fff;
+}
+.ui-progressbar.fail .ui-progressbar-value{
+    background:red;
+}

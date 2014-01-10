@@ -1,0 +1,33 @@
+{
+    "js_version":"001",
+    "css_version":"001",
+    "db":{
+        "ip":"127.0.0.1",
+        "port":"27017",
+        "user":"song",
+        "pass":"song",
+        "dbname":"picOnline"
+    },
+    "session":{
+        "path":"127.0.0.1",
+        "port":"27017",
+        "user":"song",
+        "pass":"song",
+        "collection":"session",
+        "dbname":"sessionDB"
+    },
+    "thumbnail":{
+        "ip":"127.0.0.1",
+        "port":"27017",
+        "user":"song",
+        "pass":"song",
+        "dbname":"thumbnailDB"
+    },
+    "image":{
+        "ip":"127.0.0.1",
+        "port":"27017",
+        "user":"song",
+        "pass":"song",
+        "dbname":"imagesDB"
+    }
+}

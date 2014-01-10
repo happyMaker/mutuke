@@ -1,0 +1,114 @@
+.albumList{
+
+}
+.albumList .album:hover{
+    background:#dfeeff;
+    border-color:#c3d5e4;
+}
+.albumList .album{
+    width:140px;
+    height:200px;
+    float:left;
+    border:1px solid #d8d8d8;
+    margin:5px 8px;
+    position:relative;
+    border-right:5px solid #d8d8d8;
+    border-top-right-radius:10px;
+    border-bottom-right-radius:10px;
+}
+.album a{
+    display: block;
+    height: 100%;
+    width: 100%;
+    float: left;
+}
+.album .name,
+.album .date{
+    float: left;
+    width: 118px;
+    height: 20px;
+    margin: 0 10px;
+    text-align: right;
+}
+.album .imgBox{
+    width:120px;
+    height:120px;
+    margin:10px;
+    text-align:center;
+}
+.album .imgBox .fa{
+    width: 100%;
+    height: 100%;
+    font-size: 100px;
+    margin-top: 8px;
+    color: #ddd;
+}
+.album .imgBox img{
+    width:100%;
+    height:100%;
+    border:1px solid #ccc;
+    border-radius:5px;
+}
+.album .count{
+    position: absolute;
+    top: 96px;
+    right: 6px;
+    text-align: center;
+    color: #fff;
+    text-indent: 5px;
+    font-size: 12px;
+    padding-right: 10px;
+    padding-left: 5px;
+    font-size: 28px;
+}
+.album .name{
+    font-weight:bold;
+    color:#666;
+}
+.album .date{
+    color:#aaa;
+}
+.album:hover .remove{
+    display:block;
+}
+.album .remove:hover{
+    background:red;
+}
+.album .remove{
+    width: 24px;
+    height: 24px;
+    line-height: 24px;
+    background:#ff7994;
+    border-radius: 15px;
+    position: absolute;
+    top: -12px;
+    left: -10px;
+    text-align:center; 
+    color:#fff;
+    display:none;
+}
+.toolbox{
+    overflow:hidden;
+    padding:15px 0;
+}
+.toolbox label{
+    float:left;
+    margin:0 10px;
+    line-height:24px;
+    font-size:14px;
+}
+.toolbox .btnBlue{
+    float:left;
+    margin-left:10px;
+}
+
+
+
+.toolbox .alt{
+    color:red;
+    width:100%;
+    font-size:14px;
+    float:left; 
+    text-align:center;
+    margin-top:10px;
+}

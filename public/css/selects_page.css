@@ -1,0 +1,14 @@
+.showBox{
+    width:100%;
+    overflow:hidden;
+    padding:20px;
+}
+.showBox .photoList{
+    width:100%;
+    float:left;
+}
+.showBox .photoList li{
+    float:left;
+    margin:5px;
+
+}

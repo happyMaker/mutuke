@@ -1,0 +1,33 @@
+.right_area{
+    width:100%;
+}
+.content{
+    width:100%;
+}
+.bindBox{
+    width:215px;
+    margin:0 auto;
+    margin-top:50px;
+    margin-bottom:50px;
+    overflow:hidden;
+}
+.bindBox .li{
+    float:left;
+    width:100%;
+    margin-top:5px;
+}
+.bindBox .vcInput{
+    width:60px;
+}
+#vcBox img{
+    height:24px;
+    margin-left:5px;
+}
+#vcBox{
+    float:left;
+    margin:0 10px;
+}
+#changeVC{
+    line-height:30px;
+}
+

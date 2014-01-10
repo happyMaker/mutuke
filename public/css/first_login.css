@@ -1,0 +1,23 @@
+.right_area{
+    width:100%;
+}
+.right_area .title{
+    width:100%;
+    text-align:center;
+    font-size:18px;
+    margin-top:90px;
+}
+.right_area .content{
+    width:500px;
+    overflow:hidden;
+    margin:0 auto;
+    min-height:500px;
+    float:none;
+}
+.info{
+    margin:10px auto;
+}
+.btnBox .btnBlue{
+    margin:0 70px;
+    
+}

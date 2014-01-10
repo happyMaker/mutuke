@@ -1,0 +1,64 @@
+.infoBox{width:340px;height:300px;clear:both;margin:90px auto;margin-top:45px;}
+.login .infoBox{width:205px;}
+.infoBox label{line-height:30px;height:22px;display:block;float:left;}
+.infoBox .text{border:1px solid #ddd;width:200px;}
+.infoBox p{margin-top:5px;float:left;width:205px;}
+.vcTool{width:205px;}
+.infoBox .btnBox{width:100%;margin-top:15px;text-align:center;}
+#login{
+    width:100%;
+}
+.rightLink{font-size:12px;float:right;line-height: 30px; display: block; height: 20px;}
+.qq_login{font-size:12px;padding-left:24px;background:url("http://img1.gtimg.com/download/pics/hv1/208/117/783/50944618.gif") no-repeat;background-size:24px;height:20px;display:block;line-height:20px;}
+
+.register{}
+.login{}
+.right_area{
+    width:100%;
+}
+.alert{display:block;height:24px;}
+.infoBox .authBox{margin-top:30px;}
+.content{
+    width:500px;
+    overflow:hidden;
+    margin:0 auto;
+    clear:both;
+}
+.content .toolBar,
+.content .topBox{
+    float:none;
+}
+.vcTool{margin-top:5px;float:left;}
+#vcode{width:60px;margin-right:10px;float:left;}
+#vcBox{float:left;margin-right:10px;}
+#changeVC{float:left;line-height:30px;font-size:12px;}
+
+.protocol{line-height:30px;font-size:12px;float:left;margin-left:10px;}
+
+.infoBox .info i{
+    float:left;
+}
+.infoBox .info{
+    float:left;
+    width:120px;
+    padding-top:5px;
+    margin-left:5px;
+    color:red;
+    font-size:12px;
+}
+
+.regOk{
+    text-align: center;
+    width: 100%;
+    background: rgba(50, 50, 50, 0.3);
+    height: 100%;
+    background: #FFF;
+    padding:90px 0;
+}
+
+.regOk .okImg{
+    margin:15px auto;
+}
+.regOk .title{
+    font-size:36px;
+}

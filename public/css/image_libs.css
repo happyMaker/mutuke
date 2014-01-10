@@ -1,0 +1,70 @@
+.image_libs{width:980px;margin:0 auto;}
+.libsBox .lib{float:left;width: 100%; height: 45px; border-bottom: 1px solid #DDD; line-height: 45px;}
+.libsBox .bar{float:right;}
+.libsBox .bar .btnSmall{display:inline-block;text-align:center;margin-left:15px;}
+
+.topBox .search{
+    float:right;
+    margin:2px 0 0 50px;
+    width:200px;
+    height:20px;
+    line-height:20px;
+    font-size:12px;
+}
+.toolBar .td{
+    color:#fff;
+    cursor:default;
+}
+.toolBar .td,
+.content .td{
+    float:left;
+    height:30px;
+    line-height:30px;
+}
+.content .td{
+    height:35px;
+    line-height:35px;
+}
+.toolBar .name{
+    margin-left:10px;
+}
+.toolBar .name,
+.content .name{
+    width:150px;
+    padding-left:20px;
+}
+.toolBar .cus,
+.content .cus{
+    width:200px;
+}
+.toolBar .date,
+.content .date{
+    width:120px;
+}
+.toolBar .play,
+.content .play{
+    width:300px;
+    color:#eee;
+}
+.content .play a{
+    font-size:12px;
+    color:#aaa;
+    padding:0 5px;
+}
+.content .play a:hover{
+    color:#333;
+}
+.content .list{
+    float:left;
+    width:780px;
+    min-height:300px;
+}
+.list li{
+    float:left;
+    min-width:800px;
+    line-height:35px;
+    border-bottom:1px solid #ddd;
+}
+.list li:hover{
+    background:#f5f5f5;
+}

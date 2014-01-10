@@ -1,0 +1,133 @@
+.product{
+    width:800px;
+    height:400px;
+    position:relative;
+}
+.product .overDiv{
+    position:absolute;
+    top:0px;
+    left:0px;
+    width:100%;
+    height:100%;
+    background:rgba(253,253,253,0.7);
+    z-index:999;
+}
+.product .overDiv p{
+    margin-top: 232px;
+    margin-left:10px;
+    float:left;
+}
+.product .overDiv .fa{
+    margin-top: 225px;
+    float: left;
+    margin-left: 350px;
+    font-size:32px;
+}
+.product .allProduct,
+.product .cusProduct{
+    width:370px;
+    height:480px;
+    border:1px solid #ddd;
+    border-radius:5px;
+}
+.product .allProduct{
+    float:left;
+}
+.product .allProduct .pList{
+    overflow-y:auto;
+    height: 480px;
+}
+.product .pList .thu i{
+    font-size:56px;
+    color:#ddd;
+}
+.product .pList .thu img{
+    max-width:100%;
+    max-height:100%;
+}
+.product .pList .thu{
+    float:left;
+    width:70px;
+    height:70px;
+    line-height:70px;
+    text-align:center;
+    margin-right:15px;
+}
+.product .pList .remove i,
+.product .pList .add i{
+    font-size:14px;
+    line-height:16px;
+    float:left;
+}
+.product .pList .remove,
+.product .pList .add{
+    margin-top:5px;
+    position:absolute;
+    right:5px;
+    top:0px;
+    font-size:12px;
+    height:18px;
+    line-height:18px;
+}
+.product .pList .name,
+.product .pList .imgCount,
+.product .pList .size,
+.product .pList .description{
+    font-size:12px;
+    float:left;
+    width:260px;
+    margin-bottom:5px;
+}
+.product .cusProduct{
+    float:right;
+}
+.productLi{
+    position:relative;
+    width:345px;
+    float:left;
+    padding:5px 0;
+    border-bottom:1px solid #eee;
+    margin-left:5px;
+}
+
+.allProduct .countBox{
+    display:none;
+}
+.countBox{
+    position:absolute;
+    top:30px;
+    right:3px;
+}
+.countBox .check{
+    float:left;
+    font-size:32px;
+    line-height:20px;
+    color:green;
+}
+.countBox .setCount{
+    float:left;
+    color:#666;
+}
+.countBox .subOne,
+.countBox .addOne{
+    float:left;
+    width:16px;
+    height:16px;
+    font-size:14px;
+    line-height:18px;
+    border-radius:3px;
+    cursor:pointer;
+    text-align:center;
+    color:#456590;
+}
+.countBox .count{
+    float:left;
+    width:20px;
+    margin:0 5px;
+    height:16px;
+    line-height:16px;
+    text-align:center;
+    font-size:12px;
+    border:1px solid #ddd;
+    border-radius:3px;
+}

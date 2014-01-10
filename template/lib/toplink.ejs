@@ -1,0 +1,9 @@
+<div class="toplink">
+    <ul class="links">
+        <li><a href="/album_list">个人相册</a></li>
+        <%if(locals.user){%>
+            <li> <a href="/userset"><%=user.name%></a> </li>
+            <li> <a href="/logout">退出</a> </li>
+        <%}%>
+    </ul>
+</div>

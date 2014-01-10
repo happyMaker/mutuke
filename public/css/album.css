@@ -1,0 +1,80 @@
+.photo{
+    float:left;
+    position:relative;
+    margin:10px 10px;
+    padding:10px;
+    width:160px;
+    border:1px solid #ddd;
+}
+.photo:hover{
+    border:1px solid #c3d5e4;
+    background:#dfeeff;
+}
+.nav{
+}
+.page_title i{
+        float: left;
+        line-height: 30px;
+        color: #09F;
+}
+.photo .imgBox{
+    float:left;
+    height:160px;
+    width:160px;
+}
+.photo .imgBox img{
+    width:100%;
+    height:100%;
+}
+.photo .nameBox{
+    width:160px;
+    height:30px;
+    float:left;
+    margin-top:5px;
+    visibility:hidden;
+}
+.photo:hover .nameBox{
+    visibility:visible;
+}
+.photo .nameBox .download:hover,
+.photo .nameBox .delete:hover{
+    color:#333;
+}
+.photo .nameBox .download,
+.photo .nameBox .delete{
+    width: 14px;
+    height: 14px;
+    padding:5px;
+    font-size: 14px;
+    text-align: center;
+    float:right;
+    cursor:pointer;
+}
+
+.toolBar .albumName{
+   font-size:18px; 
+   color:#eee;
+   margin-left:22px;
+   float:left;
+   height:30px;
+   line-height:32px;
+   width:500px;
+}
+
+.toolBar .tool:hover{
+    color:#fff;
+}
+.toolBar .tool{
+    float:left;
+    color:#eee;
+    line-height:32px;
+    margin:0 7px;
+    text-align:center;
+    cursor:pointer;
+}
+.toolBar .tool label{
+    margin-left:5px;
+    font-size:14px;
+    cursor:pointer;
+}
+

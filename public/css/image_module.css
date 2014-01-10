@@ -1,0 +1,135 @@
+.moduleList{
+    float:left;
+    width:810px;
+}
+.content{
+    position:relative;
+}
+.content .addBox{
+    width:810px;
+    text-align: center;
+    background: #FAFAFA;
+    height:100px;
+    float:left;
+    padding-bottom:10px;
+    display:none;
+}
+.content .inputBox{
+    width:380px;
+    overflow:hidden;
+    margin:40px auto;
+}
+.content .inputBox .lab_name{
+    float:left;
+    line-height:30px;
+    padding:0 10px;
+}
+.content .inputBox .text{
+    margin-right:5px;
+    width:210px;
+}
+.content .inputBox .btnBlue{
+    margin-left:5px;
+}
+.moduleList .module:hover{
+    background:#dde5f0;
+}
+.moduleList .module{
+    border-radius:10px;
+    position:relative;
+    float:left;
+    padding:20px 0;
+    float:left;
+    width:100%;
+}
+.module .editInput{
+}
+.module.editBox{
+    background:#dde5f0;
+}
+.imgBox{
+    overflow:hidden;
+    float:left;
+    width:150px;
+    height:150px;
+    line-height:150px;
+    text-align:center;
+    cursor:pointer;
+    position:relative;
+    border:1px solid #ddd;
+    border-radius:5px;
+    margin-left:15px;
+}
+.imgBox img{
+    max-width:100%;
+    max-height:100%;
+}
+.imgBox .editIcon{
+    position: absolute;
+    top: 5px;
+    font-size: 16px;
+    right: 5px;
+    color: #fff;
+    width:24px;
+    height:24px;
+    text-align:center;
+    line-height:24px;
+    border-radius:3px;
+    background:#456590;
+    padding:0;
+}
+.imgBox .imageEdit{
+    position:absolute;
+    top:5px;
+    right:5px;
+    width:20px;
+    height:20px;
+    text-indent:300px;
+    overflow:hidden;
+    cursor:pointer;
+    border:none;
+}
+.rightBox lable{
+    float:left;
+    width:70px;
+}
+.rightBox textarea{
+    width:600px;
+    height:70px;
+}
+.rightBox{
+    float:left;
+    width:600px;
+    margin-left:20px;
+}
+.rightBox .name{
+    margin-top: 0;
+    font-size: 16px;
+    font-weight: bold;
+    width:100%;
+}
+.rightBox .imgCount{
+    margin-top:5px;
+    float:left;
+}
+.rightBox .size{
+    margin-top:5px;
+    width:100%;
+    float:left;
+}
+
+.rightBox .description{
+    margin-top:10px;
+    width:100%;
+    float:left;
+}
+.btnBar{
+    position:absolute;
+    right:20px;
+}
+.btnBar .edit,
+.btnBar .cancel,
+.btnBar .save,
+.btnBar .delete{
+    margin-left:5px;
+}

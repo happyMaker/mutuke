@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <% include lib/header %>
+        <link href="/css/bind_link.css?v=<%=css_version%>" rel="stylesheet" />
+        <script src="/js/common.js"></script>
+        <script>
+            $(document).ready(function(){
+                    var cusId=$("#cusId").val();
+                $("#bind").click(function(){
+                    var reserverMessage=$("#reserverMessage").val();
+                    var vcode=$("#vcode").val();
+                    $.ajax({
+                       type:"post", 
+                       url:"/bindLink",
+                       data:{"vcode":vcode,"cusId":cusId,"reserverMessage":reserverMessage},
+                       datatype:"json",
+                       success:function(data){
+                           if(data.status=="ok"){
+                            window.location="/select_photos" 
+                           }else{
+                           console.log(data.message);
+                        }
+                       }
+                    });
+                }); 
+
+                $("#changeVC").click(function(){
+                    getVC();
+                });
+                getVC();
+            });
+                function getVC(){
+                    var img=$("<img/>",{"src":Common.VC.getVC()});
+                    img.load(function(){
+                        $("#vcBox").html("").append(img);
+                    })
+                }
+        </script>
+    </head>
+    <body class="page manage_image">
+        <% include lib/toplink%>
+        <input id="cusId" type="hidden" value="<%=cusId%>">
+        <div class="right_area">
+            <div class="topBox">
+                <div class="logoBox">LOGO</div>
+            </div>
+            <div class="toolBar">
+            </div>
+            <div class="bottom_line"></div>
+            <div class="content">
+                <div class="bindBox">
+                    <div class="li"><input class="text" id="reserverMessage" placeholder="预留信息" /></div>
+                    <div class="li"><input class="text vcInput" id="vcode" placeholder="验证码" /><div id="vcBox"></div><a id="changeVC">换一张</a></div>
+                    <div class="li"><div class="btnBlue" id="bind">绑定</div></div>
+                </div>
+            </div>
+        </div>
+        <% include lib/footer %>
+    </body>
+</html>

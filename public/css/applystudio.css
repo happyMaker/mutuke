@@ -1,0 +1,54 @@
+.right_area{
+    width:100%;
+}
+.content{
+    width:500px;
+    overflow:hidden;
+    margin:0 auto;
+    min-height:500px;
+    clear:both;
+}
+.content .headline{
+    font-size:18px;
+    margin:80px 0;
+    width:100%;
+    text-align:center;
+}
+.infoBox{
+    width:240px;
+    margin:0 auto;
+    overflow:hidden;
+}
+.infoBox label{
+    float:left;
+    margin-right:5px;
+    height:24px;
+    line-height:24px;
+}
+.infoBox li{
+    float:left;
+    width:100%;
+    margin-top:10px;
+}
+.infoBox .submit{
+    width:100px;
+    float:none;
+    margin:0px auto;
+    clear:both;
+}
+
+.regOk{
+    text-align: center;
+    width: 100%;
+    background: rgba(50, 50, 50, 0.3);
+    height: 100%;
+    background: #FFF;
+    padding:90px 0;
+}
+
+.regOk .okImg{
+    margin:15px auto;
+}
+.regOk .title{
+    font-size:36px;
+}
