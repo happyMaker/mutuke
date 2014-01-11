@@ -263,6 +263,9 @@ function setApp(app){
             });
         };
     });
+
+    /* =========================     order start  -----------------------------*/ 
+
     app.post("/ajax_getOrderList",function(req,res){
         var jsonReq={};
             jsonReq.userId=req.session.userId;
@@ -300,18 +303,20 @@ function setApp(app){
             })
         }
     });
+    
     //给customerInfo 绑定 product
-    app.post("/ajax_bindProductToCustomer",function(req,res){
+    app.post("/ajax_bindProductToOrder",function(req,res){
         var userId=req.session.userId;
         var jsonReq={};
             jsonReq.userId=userId;
+            jsonReq.orderId=req.body.orderId;
             jsonReq.productId=req.body.productId;
             jsonReq.cusInfoId=req.body.cusInfoId;
             jsonReq.studioId=req.session.studioId;
         if(checkLogind(req,res)){
             checkStudio(req,res,"post",function(err,result){
                 if(result.status=="ok"){
-                    ctrl.Customer.addProductToCustomer(jsonReq,function(err,result){
+                    ctrl.Order.addProductToOrder(jsonReq,function(err,result){
                         if(err){
                             res.send({"status":"error","message":err})
                             return;
@@ -324,56 +329,7 @@ function setApp(app){
             });
         }
     });
-    //从customerInfo中删除product；
-    app.post("/ajax_removeProductFromCustomer",function(req,res){
-        var userId=req.session.userId;
-        var jsonReq={};
-            jsonReq.userId=userId;
-            jsonReq.productId=req.body.productId;
-            jsonReq.cusInfoId=req.body.cusInfoId;
-            jsonReq.studioId=req.session.studioId;
-        if(checkLogind(req,res)){
-            checkStudio(req,res,"post",function(err,result){
-                if(result.status=="ok"){
-                    ctrl.Customer.removeProductFromCustomer(jsonReq,function(err,result){
-                        if(err){
-                            res.send({"status":"error","message":err})
-                            return;
-                        }
-                        res.send({"status":"ok"});
-                    });
-                }else{
-                        res.send({"status":"sorry"});
-                }
-            });
-        }
-    });
-
-    //减少1个，如果为0则会删除；
-    app.post("/ajax_subProductFromCustomer",function(req,res){
-        var userId=req.session.userId;
-        var jsonReq={};
-            jsonReq.userId=userId;
-            jsonReq.productId=req.body.productId;
-            jsonReq.cusInfoId=req.body.cusInfoId;
-            jsonReq.studioId=req.session.studioId;
-        if(checkLogind(req,res)){
-            checkStudio(req,res,"post",function(err,result){
-                if(result.status=="ok"){
-                    ctrl.Customer.subProductFromCustomer(jsonReq,function(err,result){
-                        if(err){
-                            res.send({"status":"error","message":err})
-                            return;
-                        }
-                        res.send({"status":"ok"});
-                    });
-                }else{
-                        res.send({"status":"sorry"});
-                }
-            });
-        }
-    });
-
+    
     //获取customerInfo下得所有模板 product
     app.post("/ajax_getProductsFromOrder",function(req,res){
         var userId=req.session.userId;
@@ -393,6 +349,63 @@ function setApp(app){
             });
         }
     });
+   
+    //从customerInfo中删除product；
+    app.post("/ajax_removeProductFromOrder",function(req,res){
+        var userId=req.session.userId;
+        var jsonReq={};
+            jsonReq.userId=userId;
+            jsonReq.productId=req.body.productId;
+            jsonReq.orderId=req.body.orderId;
+            jsonReq.cusInfoId=req.body.cusInfoId;
+            jsonReq.studioId=req.session.studioId;
+        if(checkLogind(req,res)){
+            checkStudio(req,res,"post",function(err,result){
+                if(result.status=="ok"){
+                    ctrl.Order.removeProductFromOrder(jsonReq,function(err,result){
+                        if(err){
+                            res.send({"status":"error","message":err})
+                            return;
+                        }
+                        res.send({"status":"ok"});
+                    });
+                }else{
+                        res.send({"status":"sorry"});
+                }
+            });
+        }
+    });
+    
+    //减少1个，如果为0则会删除；
+    app.post("/ajax_subProductFromOrder",function(req,res){
+        var userId=req.session.userId;
+        var jsonReq={};
+            jsonReq.userId=userId;
+            jsonReq.productId=req.body.productId;
+            jsonReq.orderId=req.body.orderId;
+            jsonReq.cusInfoId=req.body.cusInfoId;
+            jsonReq.studioId=req.session.studioId;
+        if(checkLogind(req,res)){
+            checkStudio(req,res,"post",function(err,result){
+                if(result.status=="ok"){
+                    ctrl.Order.subProductFromOrder(jsonReq,function(err,result){
+                        if(err){
+                            res.send({"status":"error","message":err})
+                            return;
+                        }
+                        res.send({"status":"ok"});
+                    });
+                }else{
+                        res.send({"status":"sorry"});
+                }
+            });
+        }
+    });
+
+    /* =========================     order end       =============================*/
+    
+
+
 
     //获取客户列表
     app.post('/ajax_getCustomer', function(req, res){

@@ -26,12 +26,14 @@ page.ajax_createOrder=function(json){
 
 page.ajax_removeProduct=function(json,callback){
     var pid=json.pid,
+        oid=json.oid,
         cid=json.cid;
         $.ajax({
             "type":"post",
-            "url":"/ajax_removeProductFromCustomer",
+            "url":"/ajax_removeProductFromOrder",
             "dataType":"json",
             "data":{
+                "orderId":oid,
                 "cusInfoId":cid,
                 "productId":pid
             },
@@ -46,12 +48,14 @@ page.ajax_removeProduct=function(json,callback){
     }
 page.ajax_subProduct=function(json,callback){
     var pid=json.pid,
+        oid=json.oid,
         cid=json.cid;
         $.ajax({
             "type":"post",
-            "url":"/ajax_subProductFromCustomer",
+            "url":"/ajax_subProductFromOrder",
             "dataType":"json",
             "data":{
+                "orderId":oid,
                 "cusInfoId":cid,
                 "productId":pid
             },
@@ -66,12 +70,15 @@ page.ajax_subProduct=function(json,callback){
     }
 page.ajax_bindProduct=function(json,callback){
     var pid=json.pid,
-        cid=json.cid;
+        cid=json.cid,
+        oid=json.oid;
+    console.log(oid);
         $.ajax({
             "type":"post",
-            "url":"/ajax_bindProductToCustomer",
+            "url":"/ajax_bindProductToOrder",
             "dataType":"json",
             "data":{
+                "orderId":oid,
                 "cusInfoId":cid,
                 "productId":pid
             },
@@ -229,7 +236,8 @@ var ProductBox=(function(){
         var ary=data||[];
             for(var i=0,l=ary.length;i<l;i++){
                 var json=ary[i];
-                json.cusInfoId=page.cusInfoId;
+                    json.cusInfoId=page.cusInfoId;
+                    json.orderId=orderId;
                     json.type="pList";
                     json.tage=pList;
                     ProductFactory.createProduct(json);
@@ -241,6 +249,7 @@ var ProductBox=(function(){
             for(var i=0,l=ary.length;i<l;i++){
                 var json=ary[i];
                     json.cusInfoId=page.cusInfoId;
+                    json.orderId=orderId;
                     json.type="aList";
                     json.tage=aList;
                     ProductFactory.createProduct(json);
@@ -268,6 +277,7 @@ var ProductFactory=(function(){
     var ActiveProduct;
     function OriginProduct(json){
         this.id=json["_id"];
+        this.orderId=json.orderId;
         originList[this.id]=this;
         this.json=json;
         this.cusInfoId=json.cusInfoId;
@@ -316,6 +326,7 @@ var ProductFactory=(function(){
        var jsonReq={};
             jsonReq.pid=that.id;
             jsonReq.cid=that.cusInfoId;
+            jsonReq.oid=that.orderId;
         page.ajax_bindProduct(jsonReq,function(){
             if(!that.count){
                 that.json.type="pList"
@@ -330,6 +341,7 @@ var ProductFactory=(function(){
     
     function CusProduct(json){
         this.id=json["_id"];
+        this.orderId=json.orderId;
         this.count=parseInt(json.count)||0;
         this.cusInfoId=json.cusInfoId;
         this.initUI(json);
@@ -368,6 +380,7 @@ var ProductFactory=(function(){
            var jsonReq={};
                 jsonReq.pid=that.id;
                 jsonReq.cid=that.cusInfoId;
+                jsonReq.oid=that.orderId;
 
            remove.click(function(){
                 page.ajax_removeProduct(jsonReq,function(){

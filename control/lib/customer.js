@@ -159,6 +159,7 @@ function uploadSelectPhotoList(jsonReq,callback){
 
 
 //给用户绑定模板
+/*
 function addProductToCustomer(jsonReq,callback){
     poolMain.acquire(function(err,database){
         jsonReq.database=database;
@@ -173,38 +174,9 @@ function addProductToCustomer(jsonReq,callback){
         });
     });
 }
+*/
 
-function subProductFromCustomer(jsonReq,callback){
-    poolMain.acquire(function(err,database){
-        jsonReq.database=database;
-        jsonReq.database=database;
-        db.Customer.getUserAndCustomerRelation(jsonReq,function(err,result){
-            if(err){ poolMain.release(database); return callback(err) };
-            if("creator"==result){
-                db.Customer.subProductFromCustomer(jsonReq,function(err,res){
-                    poolMain.release(database);
-                    callback(err,res);
-                });
-            }
-        });
-    });
-};
 
-//删除用户绑定的模板
-function removeProductFromCustomer(jsonReq,callback){
-    poolMain.acquire(function(err,database){
-        jsonReq.database=database;
-        db.Customer.getUserAndCustomerRelation(jsonReq,function(err,result){
-            if(err){ poolMain.release(database); return callback(err) };
-            if("creator"==result){
-                db.Customer.removeProductFromCustomer(jsonReq,function(err,res){
-                    poolMain.release(database);
-                    callback(err,res);
-                });
-            }
-        });
-    });
-}
 
 
 function getSelects(jsonReq,callback){
@@ -231,9 +203,7 @@ exports.searchCustomer=_searchCustomer;
 exports.bindUser=_bindUser;
 exports.checkBind=_checkBind;
 exports.getCustomerInfoIdByBindUserId=_getCustomerInfoIdByBindUserId;
-exports.addProductToCustomer=addProductToCustomer;
-exports.removeProductFromCustomer=removeProductFromCustomer;
-exports.subProductFromCustomer=subProductFromCustomer;
+//exports.addProductToCustomer=addProductToCustomer;
 exports.uploadSelectPhotoList=uploadSelectPhotoList;
 exports.getSelects=getSelects;
 exports.applyStudio=_applyStudio;

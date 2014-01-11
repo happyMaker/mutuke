@@ -208,37 +208,7 @@ function addStudio(jsonReq,callback){
 }
 
 
-function subProductFromCustomer(jsonReq,callback){
-    var database=jsonReq.database;
-    var cid=_createObjectId(jsonReq.cusInfoId);
-    var pid=_createObjectId(jsonReq.productId);
-    if(!(cid&&pid)){return callback("create object Id error");}
-    var col=database.collection("customerInfo");
-        getProductFromCustomerById(jsonReq,function(err,doc){
-            if(!doc){return callback("no product")};
-           if(doc.count&&doc.count>1){
-                col.update({"_id":cid,"products._id":pid},{ "$inc":{"products.$.count":-1}},function(err,item){
-                    callback(err,item);
-                });
-           }else if(doc.count&&doc.count==1){
-               removeProductFromCustomer(jsonReq,function(err,result){
-                   callback(err,result);
-               });
-           }
-        });
-}
 
-//删除用户绑定的product
-function removeProductFromCustomer(jsonReq,callback){
-    var database=jsonReq.database;
-    var cid=_createObjectId(jsonReq.cusInfoId);
-    var pid=_createObjectId(jsonReq.productId);
-    if(!(cid&&pid)){return callback("create object Id error");}
-    var col=database.collection("customerInfo");
-        col.update({"_id":cid},{$pull:{products:{"_id":pid}}},function(err,result){
-            callback(err,result);
-        });
-}
 //上传选片列表数据
 function uploadSelectPhotoList(jsonReq,callback){
     var database=jsonReq.database;
@@ -253,25 +223,6 @@ function uploadSelectPhotoList(jsonReq,callback){
         });
 }
 
-function getProductFromCustomerById(jsonReq,callback){
-    var database=jsonReq.database;
-    var cid=_createObjectId(jsonReq.cusInfoId);
-    var pid=_createObjectId(jsonReq.productId);
-    var col=database.collection("customerInfo");
-        col.findOne({"_id":cid,"products._id":pid},function(err,doc){
-            if(!doc){
-               return callback(err,null);
-            }
-            var ary=doc.products;
-            for(var i=0,l=ary.length;i<l;i++){
-                if(ary[i]["_id"]==pid.toString()){
-                    return callback(err,ary[i]);
-                }
-            }
-                callback(err,null);
-        });
-
-}
 
 
 
@@ -285,7 +236,5 @@ exports.getImageLibsId=_getImageLibsId;
 exports.createCustomerListForUser=_createCustomerListForUser;
 exports.getUserAndCustomerRelation=getUserAndCustomerRelation;
 exports.getCustomerInfoData=_getCustomerInfoData;
-exports.removeProductFromCustomer=removeProductFromCustomer;
-exports.subProductFromCustomer=subProductFromCustomer;
 exports.uploadSelectPhotoList=uploadSelectPhotoList;
 exports.addStudio=addStudio;

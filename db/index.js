@@ -13,5 +13,6 @@ exports.Customer=customer;
 exports.Common=common;
 exports.Images=images;
 exports.Product=product;
+exports.Album=album;
 exports.Order=order;
 

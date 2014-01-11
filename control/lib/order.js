@@ -1,5 +1,5 @@
 /*
- *control lib customer.js
+ *control lib order.js
  * */
 
 var db=require("../../db");
@@ -8,6 +8,7 @@ var Type=db.Common.Type;
 var getPool=db.Common.getPool;
 var poolMain=getPool("main");
 var Thumbnail=require("./thumbnail");
+var Permission=require("./permission");
 
 var addOrder=function(jsonReq,callback){
     poolMain.acquire(function(err,database){
@@ -32,10 +33,7 @@ var addOrder=function(jsonReq,callback){
 var getOrderList=function(jsonReq,callback){
     poolMain.acquire(function(err,database){
         jsonReq.database=database;
-        jsonReq.queryObj={
-            bindUser:jsonReq.userId
-        }
-       db.Customer.getUserAndCustomerRelation(jsonReq,function(err,result){
+           db.Customer.getUserAndCustomerRelation(jsonReq,function(err,result){
            if("creator"==result){
                db.Order.getOrderList(jsonReq,function(err,result){
                    callback(err,result);
@@ -47,6 +45,16 @@ var getOrderList=function(jsonReq,callback){
            }
        });
    });
+}
+var getOrderData=function(jsonReq,callback){
+    poolMain.acquire(function(err,database){
+        jsonReq.database=database;
+           db.Customer.getUserAndCustomerRelation(jsonReq,function(err,result){
+           if("creator"==result){
+           }else{
+           }
+       });
+    });
 }
 
 
@@ -63,7 +71,7 @@ function addProductToOrder(jsonReq,callback){
         db.Customer.getUserAndCustomerRelation(jsonReq,function(err,result){
             if(err){ poolMain.release(database); return callback(err) };
             if("creator"==result){
-                db.Customer.addProductToCustomer(jsonReq,function(err,res){
+                db.Order.addProductToOrder(jsonReq,function(err,res){
                     poolMain.release(database);
                     callback(err,res);
                 });
@@ -92,7 +100,39 @@ function getProductsFromOrder(jsonReq,callback){
         });
     });
 }
+function subProductFromOrder(jsonReq,callback){
+    poolMain.acquire(function(err,database){
+        jsonReq.database=database;
+        db.Customer.getUserAndCustomerRelation(jsonReq,function(err,result){
+            if(err){ poolMain.release(database); return callback(err) };
+            if("creator"==result){
+                db.Order.subProductFromOrder(jsonReq,function(err,res){
+                    poolMain.release(database);
+                    callback(err,res);
+                });
+            }
+        });
+    });
+};
+//删除用户绑定的模板
+function removeProductFromOrder(jsonReq,callback){
+    poolMain.acquire(function(err,database){
+        jsonReq.database=database;
+        db.Customer.getUserAndCustomerRelation(jsonReq,function(err,result){
+            if(err){ poolMain.release(database); return callback(err) };
+            if("creator"==result){
+                db.Order.removeProductFromOrder(jsonReq,function(err,res){
+                    poolMain.release(database);
+                    callback(err,res);
+                });
+            }
+        });
+    });
+}
 
 exports.addOrder=addOrder;
 exports.getOrderList=getOrderList;
 exports.getProductsFromOrder=getProductsFromOrder;
+exports.addProductToOrder=addProductToOrder;
+exports.removeProductFromOrder=removeProductFromOrder;
+exports.subProductFromOrder=subProductFromOrder;
