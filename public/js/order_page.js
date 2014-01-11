@@ -8,8 +8,38 @@ $(document).ready(function(){
 
 page.bindPageEvent=function(){
     $("#addCustomer").click(function(){
-        page.ajax_createOrder();
+        //page.ajax_createOrder();
+        var d=create();
+        d.dialog({
+            autoOpen:true,
+            modal: true,
+            width:590,
+            resizable:false,
+            close:function(){
+                $(this).remove();
+            }
+        });
     });  
+}
+
+var create=function(){
+   var htmlStr="<div>"+
+                    "<ul class='createOrderBox'>"+
+                        "<li><div class='key'>名称</div><div class='infoBox'><input class='text' /></div></li>"+
+                        "<li><div class='key'>拍照时间</div><div class='infoBox'><input class='text' /></div></li>"+
+                        "<li><div class='key'>结婚时间</div><div class='infoBox'><input class='text' /></div></li>"+
+                        "<li><div class='key'>拍照人</div><div class='infoBox'><input class='text' /></div></li>"+
+                        "<li><div class='key'>金额</div><div class='infoBox'><input class='text' /></div></li>"+
+                        "<li><div class='key'>备注</div><div class='infoBox'><textarea class='text remarks' ></textarea></div></li>"+
+                        "<li><div class='btnBlue submit'>提交</div></li>"+
+                    "</ul>"+
+                "</div>"; 
+    var d=$(htmlStr);
+        d.find(".submit").click(function(){
+            alert("bcd");
+        });
+   return d;
+
 }
 
 page.ajax_createOrder=function(json){
@@ -150,8 +180,7 @@ page.OrderFactory=(function(){
     }
     order.prototype.initUI=function(){
         var data=this.data;
-        var date=new Date(data.createDate);
-        var li=$("<li/>",{"text":date.toLocaleDateString(),"class":"li"}); 
+        var li=$("<li/>",{"class":"li"}); 
         $(".orderList").append(li);
         var bar=page.LibBar;
             new bar(li,data);
@@ -173,15 +202,24 @@ page.LibBar=(function(){
     };
     bar.prototype.initUI=function(tage){
         var that=this;
+        var date=new Date(that.jsonData.createDate);
+        var dateUI=$("<span/>",{"class":"date","text":date.toLocaleDateString()});
         var remove=$("<a/>",{"text":"删除"});
         var setModle=$("<a/>",{"text":"添加模板"});
         var setImage=$("<a/>",{"href":"/b/manage_image/"+page.cusInfoId+"/"+that.orderId,"text":"管理图片"});
         var selectsList=$("<a/>",{"target":"_blank","href":"/b/selects/"+that.orderId,"text":"查看选片"});
         var detail=$("<a/>",{"target":"_blank","href":"/b/order_detail/"+page.cusInfoId+"/"+that.orderId,"text":"订单详情"});
-            tage.append(remove,setModle,setImage,selectsList,detail);
+            var html="<div class='progress'><div class='p1'>待上传</div><div></div><div class='p2'>选片中</div><div class='p3'>待设计</div><div class='p4'>审核中</div><div class='p5'>设计完成</div><div class='p6'>交易完成</div></div>";
+        var box=$("<div/>",{"class":"playBox"});
+            box.append(remove,setModle,setImage,selectsList,detail);
+            tage.append(dateUI,html,box);
             this.bindEvent({
                 setModle:setModle
             });
+            for(var i=1;i<4;i++){
+                var temp=tage.find(".p"+i);
+                    temp.addClass("active");
+            }
     };
     bar.prototype.bindEvent=function(json){
         var that=this;

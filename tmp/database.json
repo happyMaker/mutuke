@@ -72,6 +72,7 @@
         {"pid":"objectId('asdffefefef')"},
         {"pid":"objectId('asdffefefef')","selectPhotos":["objectId('asdfefeaefa1243122312341234')"]}
         ]
+    //拍照时间，拍照人，价格，
 }
 
 
