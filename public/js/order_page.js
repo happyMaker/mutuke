@@ -177,7 +177,8 @@ page.LibBar=(function(){
         var setModle=$("<a/>",{"text":"添加模板"});
         var setImage=$("<a/>",{"href":"/b/manage_image/"+page.cusInfoId+"/"+that.orderId,"text":"管理图片"});
         var selectsList=$("<a/>",{"target":"_blank","href":"/b/selects/"+that.orderId,"text":"查看选片"});
-            tage.append(remove,setModle,setImage,selectsList);
+        var detail=$("<a/>",{"target":"_blank","href":"/b/order_detail/"+page.cusInfoId+"/"+that.orderId,"text":"订单详情"});
+            tage.append(remove,setModle,setImage,selectsList,detail);
             this.bindEvent({
                 setModle:setModle
             });

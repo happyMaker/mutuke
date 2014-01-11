@@ -109,14 +109,11 @@ page.LibBar=(function(){
         var order=$("<a/>",{"text":"订单管理","href":"/b/orderList/"+that.cusId});
         var share=$("<a/>",{"text":"绑定链接"});
         this.bindUserId?share.addClass("active")&&share.text("已绑定")&&share.data("bd",true):"";
+        var detail=$("<a/>",{"text":"详细","class":"detail","href":"/b/customer_detail/"+that.cusId});
         var remove=$("<a/>",{"text":"删除"});
-        var setModle=$("<a/>",{"text":"添加模板"});
-        var setImage=$("<a/>",{"href":"/b/manage_image/"+that.cusId,"text":"管理图片"});
-        var selectsList=$("<a/>",{"target":"_blank","href":"/b/selects/"+that.cusId,"text":"查看选片"});
-            tage.append(share,order,remove,setModle,setImage,selectsList);
+            tage.append(share,order,remove,detail);
             this.bindEvent({
-                share:share,
-                setModle:setModle
+                share:share
             });
     };
     bar.prototype.bindEvent=function(json){
@@ -149,9 +146,6 @@ page.LibBar=(function(){
                         box.remove();
                     }
                 });
-            });
-            json.setModle.click(function(){
-                ProductBox.open(that.cusId);
             });
     };
     return bar;

@@ -312,6 +312,29 @@ function setApp(app){
 
 
 //---------------------------------------------------------------- studio begin ---------------------------------------------------//
+    //客户详细信息管理
+    app.get("/b/customer_detail/:cusInfoId",function(req,res){
+        var cusInfoId=req.params.cusInfoId;
+        if(checkLogind(req,res,"get","/b/customer_detail"+cusInfoId)){
+            checkStudio(req,res,"get",function(err,result){
+                if(err){
+                    return showError({
+                        "message":err,
+                        "res":res
+                    });
+                }
+                if(result.status=="ok"){
+                    res.render("./studio/customer_detail",{
+                        "js_version":js_version,
+                        "css_version":css_version,
+                        "user":{"name":req.session.username},
+                        "cusInfoId":cusInfoId,
+                        "title":"客户详细信息"
+                    });
+                }
+            });
+        }
+    });
 
     //事物管理
     app.get("/b/studio_set",function(req,res){
@@ -324,11 +347,36 @@ function setApp(app){
                     });
                 }
                 if(result.status=="ok"){
-                    res.render("studio_set",{
+                    res.render("./studio/studio_set",{
                         "js_version":js_version,
                         "css_version":css_version,
                         "user":{"name":req.session.username},
                         "title":"工作室设置"
+                    });
+                }
+            });
+        }
+    });
+    //订单详情
+    app.get("/b/order_detail/:cusInfoId/:orderId",function(req,res){
+        var cusInfoId=req.params.cusInfoId;
+        var orderId=req.params.orderId;
+        if(checkLogind(req,res,"get","/b/order_detail/"+cusInfoId+"/"+orderId)){
+            checkStudio(req,res,"get",function(err,result){
+                if(err){
+                    return showError({
+                        "message":err,
+                        "res":res
+                    });
+                }
+                if(result.status=="ok"){
+                    res.render("./studio/order",{
+                        "js_version":js_version,
+                        "css_version":css_version,
+                        "user":{"name":req.session.username},
+                        "cusInfoId":cusInfoId,
+                        "orderId":orderId,
+                        "title":"订单列表"
                     });
                 }
             });
@@ -369,7 +417,7 @@ function setApp(app){
                     });
                 }
                 if(result.status=="ok"){
-                    res.render("calendar",{
+                    res.render("./studio/calendar",{
                         "js_version":js_version,
                         "css_version":css_version,
                         "user":{"name":req.session.username},
@@ -394,7 +442,7 @@ function setApp(app){
                         jsonReq.userId=req.session.userId;
                     ctrl.Customer.getCustomerInfoIdByBindUserId(jsonReq,function(err,cusInfoId){
                         var cusId=cusInfoId||"";
-                        res.render("image_module",{
+                        res.render("./studio/image_module",{
                             "js_version":js_version,
                             "css_version":css_version,
                             "user":{"name":req.session.username},
@@ -407,28 +455,6 @@ function setApp(app){
         }
     });
 
-    app.get('/b/image_library', function(req, res){
-        if(checkLogind(req,res,"get","/b/image_library")){
-            checkStudio(req,res,"get",function(err,result){
-                if(err){
-                    return showError({
-                        "message":err,
-                        "res":res
-                    });
-                }
-                if(result.status=="ok"){
-                    res.render("image_library",{
-                        "js_version":js_version,
-                        "css_version":css_version,
-                        "P_css":"image_libs",
-                        "P_js":"image_libs",
-                        "user":{"name":"song","qq":"20126162"},
-                        "title":"图片库"
-                    });
-                }
-        });
-        }
-    });
     app.get('/b/manage_image/:cusInfoId/:orderId', function(req, res){
         if(!req.params.cusInfoId){ res.redirect("/404"); };
         if(checkLogind(req,res,"get","/b/manage_image/"+req.params.id)){
@@ -444,7 +470,7 @@ function setApp(app){
                         jsonReq.cusInfoId=req.params.cusInfoId,
                         jsonReq.userId=req.session.userId;
                         jsonReq.studioId=req.session.studioId;
-                        res.render("manage_image",{
+                        res.render("./studio/manage_image",{
                             "js_version":js_version,
                             "css_version":css_version,
                             "title":"图片管理",
@@ -465,7 +491,7 @@ function setApp(app){
                     });
                 }
                 if(result.status=="ok"){
-                    res.render("customer",{
+                    res.render("./studio/customer",{
                         "js_version":js_version,
                         "css_version":css_version,
                         "title":"客户管理",
@@ -488,7 +514,7 @@ function setApp(app){
                     });
                 }
                 if(result.status=="ok"){
-                    res.render("selects",{
+                    res.render("./studio/selects",{
                         "js_version":js_version,
                         "css_version":css_version,
                         "user":{"name":req.session.username},
