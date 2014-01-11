@@ -7,6 +7,7 @@ var parse=db.Common.parse;
 var Type=db.Common.Type;
 var getPool=db.Common.getPool;
 var poolMain=getPool("main");
+var Images=require("./images");
 var Thumbnail=require("./thumbnail");
 var Permission=require("./permission");
 
@@ -130,9 +131,46 @@ function removeProductFromOrder(jsonReq,callback){
     });
 }
 
+
+//上传图片并插入Id到order;
+function uploadImageToOrder(jsonReq,callback){
+    poolMain.acquire(function(err,database){
+        jsonReq.database=database;
+        if(err){return callback(err);}
+        db.Customer.getUserAndCustomerRelation(jsonReq,function(err,result){
+            if("creator"!=result){
+                poolMain.release(database);
+                callback(err,{"status":"sorry","message":"no permission"});
+            }else{
+                jsonReq.attr={
+                    "metadata":{ property:"private" }
+                }
+                jsonReq.img=Thumbnail.getImagesSize(jsonReq.files[0]);
+                Images.uploadOriginImage(jsonReq,function(err,fileId){
+                    if(err){
+                        poolMain.release(database);
+                        return callback(err);
+                    }
+                    jsonReq.fileId=fileId;
+                    jsonReq.database=database;
+                    //把添加的图片Id添加到imagesLib中；
+                    db.Order.addImageIdToOrder(jsonReq,function(err,result){
+                        poolMain.release(database);
+                        if(err){
+                            return callback(err);
+                        }
+                        callback(err,{"fileId":jsonReq.fileId, "img":jsonReq.img});
+                    });
+                });       
+            }
+        });
+    });
+};
+
 exports.addOrder=addOrder;
 exports.getOrderList=getOrderList;
 exports.getProductsFromOrder=getProductsFromOrder;
 exports.addProductToOrder=addProductToOrder;
 exports.removeProductFromOrder=removeProductFromOrder;
 exports.subProductFromOrder=subProductFromOrder;
+exports.uploadImageToOrder=uploadImageToOrder;

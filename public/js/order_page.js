@@ -175,7 +175,7 @@ page.LibBar=(function(){
         var that=this;
         var remove=$("<a/>",{"text":"删除"});
         var setModle=$("<a/>",{"text":"添加模板"});
-        var setImage=$("<a/>",{"href":"/b/manage_image/"+that.orderId,"text":"管理图片"});
+        var setImage=$("<a/>",{"href":"/b/manage_image/"+page.cusInfoId+"/"+that.orderId,"text":"管理图片"});
         var selectsList=$("<a/>",{"target":"_blank","href":"/b/selects/"+that.orderId,"text":"查看选片"});
             tage.append(remove,setModle,setImage,selectsList);
             this.bindEvent({

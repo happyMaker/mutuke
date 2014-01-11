@@ -3,6 +3,7 @@ $(document).ready(function(){
         //pageSpace._btn_fileUp=$("#fileUp");
        // pageSpace.bindEvent();
         page.cusInfoId=$("#cusInfo_id").val();
+        page.orderId=$("#order_id").val();
         ajax_get();
         UP.init();
         bindFileUpload();
@@ -12,10 +13,10 @@ $(document).ready(function(){
 function bindFileUpload(){
     $('#addCustomer').fileupload({
         autoUpload: true,//是否自动上传
-        url:"/uploadImageToImagesLib",//上传地址
+        url:"/uploadImageToOrder",//上传地址
         acceptFileTypes: /(\.|\/)(gif|jpeg|png)$/i,
         dataType: 'json',
-        formData:{"cusInfoId":page.cusInfoId,"filename":"na"},
+        formData:{"cusInfoId":page.cusInfoId,"filename":"na","orderId":page.orderId},
         done: function (e, data) {//设置文件上传完毕事件的回调函数
         },
         fail:function(e,data){

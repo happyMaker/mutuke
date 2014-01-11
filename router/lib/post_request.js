@@ -428,7 +428,7 @@ function setApp(app){
         };
     });
     //删除上传照片
-    app.post('/deleteCustomerPhoto', function(req, res){
+    app.post('/deleteOrderPhoto', function(req, res){
         var cusInfoId=req.body.cusInfoId;
         var fileId=req.body.fileId;
         if(checkLogind(req,res)){
@@ -450,10 +450,11 @@ function setApp(app){
         }
     });
     //上传图片
-    app.post('/uploadImageToImagesLib', function(req, res){
+    app.post('/uploadImageToOrder', function(req, res){
         var jsonReq={};
             jsonReq.files=req.files.files;
             jsonReq.cusInfoId=req.body.cusInfoId;
+            jsonReq.orderId=req.body.orderId;
             jsonReq.userId=req.session.userId;
             var ImageSize=jsonReq.files[0].size;
             if(parseInt(ImageSize)>upload_max_size){
@@ -466,14 +467,14 @@ function setApp(app){
                     res.send({"status":"error","message":err})
                     return;
                 }
-                ctrl.ImageLibs.uploadImageToImagesLib(jsonReq,function(err,json){
+                ctrl.Order.uploadImageToOrder(jsonReq,function(err,json){
                     res.send({"status":"ok","data":json})
                 });
             });
         };
     });
     //根据图片库Id获取图片列表
-    app.post('/getCustomerImages', function(req, res){
+    app.post('/getOrderImages', function(req, res){
         if(checkLogind(req,res)){
             var jsonReq={};
                 jsonReq.cusInfoId=req.body.cusInfoId;

@@ -427,7 +427,7 @@ function setApp(app){
         });
         }
     });
-    app.get('/b/manage_image/:cusInfoId', function(req, res){
+    app.get('/b/manage_image/:cusInfoId/:orderId', function(req, res){
         if(!req.params.cusInfoId){ res.redirect("/404"); };
         if(checkLogind(req,res,"get","/b/manage_image/"+req.params.id)){
             checkStudio(req,res,"get",function(err,result){
@@ -446,7 +446,8 @@ function setApp(app){
                             "js_version":js_version,
                             "css_version":css_version,
                             "title":"图片管理",
-                            "id":req.params.cusInfoId
+                            "cusInfoId":req.params.cusInfoId,
+                            "orderId":req.params.orderId
                         });
                 }
             });

@@ -41,40 +41,6 @@ var _deletePhoto=function(jsonReq,callback){
 }
 
 
-//上传图片并插入Id到ImagesLib;
-var _uploadImageToImagesLib=function(jsonReq,callback){
-    poolMain.acquire(function(err,database){
-        jsonReq.database=database;
-        if(err){return callback(err);}
-        db.Customer.getUserAndCustomerRelation(jsonReq,function(err,result){
-            if("creator"!=result){
-                poolMain.release(database);
-                callback(err,{"status":"sorry","message":"no permission"});
-            }else{
-                jsonReq.attr={
-                    "metadata":{ property:"private" }
-                }
-                jsonReq.img=Thumbnail.getImagesSize(jsonReq.files[0]);
-                Images.uploadOriginImage(jsonReq,function(err,fileId){
-                    if(err){
-                        poolMain.release(database);
-                        return callback(err);
-                    }
-                    jsonReq.fileId=fileId;
-                    jsonReq.database=database;
-                    //把添加的图片Id添加到imagesLib中；
-                    db.ImageLibs.addImageIdToLibs(jsonReq,function(err,result){
-                        poolMain.release(database);
-                        if(err){
-                            return callback(err);
-                        }
-                        callback(err,{"fileId":jsonReq.fileId, "img":jsonReq.img});
-                    });
-                });       
-            }
-        });
-    });
-};
 
 //通过userId和cusInfoId查找 图片库所有内容；
 function _getCustomerImages(jsonReq,callback){
@@ -101,7 +67,6 @@ function _getCustomerImages(jsonReq,callback){
     });
 }
 
-exports.uploadImageToImagesLib=_uploadImageToImagesLib;
 
 exports.getCustomerImages=_getCustomerImages;
 exports.deletePhoto=_deletePhoto;

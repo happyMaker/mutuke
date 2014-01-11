@@ -78,7 +78,7 @@ var _getImage=function(jsonReq,callback){
             if("creator"==UserTitle||"binder"==UserTitle){
                 //get database
                 //检查图片是否存在此Customer 库中；
-                db.ImageLibs.checkImageInCustomer(jsonReq,function(err,result){
+                db.Order.checkImageInCustomer(jsonReq,function(err,result){
                     if(err){
                         poolMain.release(database);
                         return callback(err);}
