@@ -147,14 +147,14 @@ function addImageIdToOrder(jsonReq,callback){
     };
 
     //通过 cusInfoId 获取 图片列表；
-    var getCustomerImages=function(jsonReq,callback){
+    var getOrderImages=function(jsonReq,callback){
         var database=jsonReq.database;
         var userId=jsonReq.userId;
-        var cusInfoId=jsonReq.cusInfoId;
-        var cid= _createObjectId(cusInfoId);
+        var cid= _createObjectId(jsonReq.cusInfoId);
+        var oid= _createObjectId(jsonReq.orderId);
         if(!cid){return callback("err")};
-        var col=database.collection("customerInfo");
-            col.findOne({"_id":cid},{"_id":0,"images":1},function(err,doc){
+        var col=database.collection("order");
+            col.findOne({"_id":oid,"cusInfoId":cid},{"_id":0,"images":1},function(err,doc){
                 if(doc){
                   callback(err,doc.images);    
                 }else{
@@ -163,34 +163,36 @@ function addImageIdToOrder(jsonReq,callback){
             });
     }
 
-    var checkImageInCustomer=function(jsonReq,callback){
+    var checkImageInOrder=function(jsonReq,callback){
         var database=jsonReq.database;    
         var cid=_createObjectId(jsonReq.cusInfoId);
+        var oid=_createObjectId(jsonReq.orderId);
         var fid=_createObjectId(jsonReq.fileId);
             if(!(fid&&cid)){return callback("err")};
-        var col=database.collection("customerInfo");
-            col.findOne({"_id":cid,"images":{$elemMatch:{"fileId":fid}}},function(err,doc){
-               if(err){return callback(err)} 
+        var col=database.collection("order");
+            col.findOne({"_id":oid,"cusInfoId":cid,"images":{$elemMatch:{"fileId":fid}}},function(err,doc){
+               if(err){return callback(err)}; 
                callback(err,doc);
             });
     }    
 
-    var removeImageFromImagelibs=function(jsonReq,callback){
+    var removeImageFromOrder=function(jsonReq,callback){
        var database=jsonReq.database; 
         var userId=jsonReq.userId;
         var cid= _createObjectId(jsonReq.cusInfoId);
+        var oid= _createObjectId(jsonReq.orderId);
         var fid= _createObjectId(jsonReq.fileId);
         if(!(cid&&fid)){return callback("err")};
-        var col=database.collection("customerInfo");
-            col.update({"_id":cid},{$pull:{images:{"fileId":fid}}},function(err,result){
+        var col=database.collection("order");
+            col.update({"_id":oid,"cusInfoId":cid},{$pull:{images:{"fileId":fid}}},function(err,result){
                 if(err){return callback(err)} 
                 callback(err,result);
             });
     }
 
-exports.getCustomerImages=getCustomerImages;
-exports.checkImageInCustomer=checkImageInCustomer;
-exports.removeImageFromImagelibs=removeImageFromImagelibs;
+exports.getOrderImages=getOrderImages;
+exports.checkImageInOrder=checkImageInOrder;
+exports.removeImageFromOrder=removeImageFromOrder;
 
 exports.addImageIdToOrder=addImageIdToOrder;
 exports.addOrder=addOrder;

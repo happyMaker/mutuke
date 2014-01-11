@@ -248,8 +248,9 @@ function setApp(app){
     });
 
     //获取客户绑定图片
-    app.get('/photo/:cusInfoId/:imageId', function(req, res){
+    app.get('/order_photo/:cusInfoId/:orderId/:imageId', function(req, res){
         var cusInfoId=req.params.cusInfoId;
+        var orderId=req.params.orderId;
         var imageId=req.params.imageId;
         var userId=req.session.userId;
         var sizeR={"origin":"origin","600":600,"300":300,"180":180,"100":100};
@@ -260,13 +261,14 @@ function setApp(app){
             if(checkLogind(req,res,"get")){
                 ctrl.Images.getImage({
                         "cusInfoId":cusInfoId,
+                        "orderId":orderId,
                         "fileId":imageId,
                         "userId":userId,
                         "imageType":type,
                         "size":size
                 },function(err,data){
                     if(err){
-                        res.redirect("/404");
+                        //res.redirect("/404");
                     }else{
                         res.writeHead(200, {"Cache-Control":"max-age=86400",'Content-Type': 'image/jpg' });
                         res.end(data, 'binary');

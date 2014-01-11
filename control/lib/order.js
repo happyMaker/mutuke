@@ -167,6 +167,71 @@ function uploadImageToOrder(jsonReq,callback){
     });
 };
 
+//通过userId和cusInfoId查找 图片库所有内容；
+function getOrderImages(jsonReq,callback){
+    poolMain.acquire(function(err,database){
+        jsonReq.database=database;
+        db.Customer.getUserAndCustomerRelation(jsonReq,function(err,relation){
+            if("creator"==relation||"binder"==relation){
+                db.Order.getOrderImages(jsonReq,function(err,result){
+                    poolMain.release(database);
+                    if(err){
+                        return callback(err);
+                    }
+                    if(result){
+                        callback(err,{"status":"ok","data":result});    
+                    }else{
+                        callback(err,{"status":"sorry"});
+                    }
+                });         
+            }else{
+                callback(err,{"status":"sorry"});
+            }
+             
+        });
+    });
+}
+
+function deletePhoto(jsonReq,callback){
+    poolMain.acquire(function(err,database){
+        jsonReq.database=database;
+        db.Customer.getUserAndCustomerRelation(jsonReq,function(err,result){
+            if(err){ poolMain.release(database); return callback(err) };
+            if("creator"==result){
+                db.Order.checkImageInOrder(jsonReq,function(err,result){
+                    if(err){ poolMain.release(database); return callback(err); }
+                    if(null!=result){
+                        Images.deleteOriginImage(jsonReq,function(err,result){
+                            if(err){ poolMain.release(database); return callback(err); }
+                            db.Order.removeImageFromOrder(jsonReq,function(err,result){
+                                poolMain.release(database); 
+                                if(err){ return callback(err); }
+                                callback(err,result); 
+                                Thumbnail.removeThumbnailByOriginId(jsonReq);
+                            });
+                        }); 
+                    }else{
+                        poolMain.release(database);
+                        callback("no image");    
+                    }
+                });
+            }else{
+                poolMain.release(database);
+                callback("no permission");
+            }
+
+        });
+    });
+
+}
+
+
+
+
+
+exports.getOrderImages=getOrderImages;
+exports.deletePhoto=deletePhoto;
+
 exports.addOrder=addOrder;
 exports.getOrderList=getOrderList;
 exports.getProductsFromOrder=getProductsFromOrder;

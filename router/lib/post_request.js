@@ -430,12 +430,14 @@ function setApp(app){
     //删除上传照片
     app.post('/deleteOrderPhoto', function(req, res){
         var cusInfoId=req.body.cusInfoId;
+        var orderId=req.body.orderId;
         var fileId=req.body.fileId;
         if(checkLogind(req,res)){
             checkStudio(req,res,"post",function(err,result){
                 if(result.status=="ok"){
-                    ctrl.ImageLibs.deletePhoto({
+                    ctrl.Order.deletePhoto({
                         cusInfoId:cusInfoId,
+                        orderId:orderId,
                         fileId:fileId,
                         userId:req.session.userId
                     },function(err,result){
@@ -478,8 +480,9 @@ function setApp(app){
         if(checkLogind(req,res)){
             var jsonReq={};
                 jsonReq.cusInfoId=req.body.cusInfoId;
+                jsonReq.orderId=req.body.orderId;
                 jsonReq.userId=req.session.userId;
-            ctrl.ImageLibs.getCustomerImages(jsonReq,function(err,result){
+            ctrl.Order.getOrderImages(jsonReq,function(err,result){
                 if(err){
                     res.send({"status":"error","message":err})
                     return;

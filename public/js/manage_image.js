@@ -130,8 +130,7 @@ var imageFactory=(function(){
     function _addSlideshowData(json){
             var tempObj=json;
             var tempJson={};
-            var src="/album_photo/"+page.albumId+"/"+tempObj.id+"?size=800";
-            var src="/photo/"+page.cusInfoId+"/"+tempObj.id+"?size=600";
+            var src="/order_photo/"+page.cusInfoId+"/"+page.orderId+"/"+tempObj.id+"?size=600";
             tempJson.src=src;
             tempJson.max=800;
             tempJson.id=tempObj.id;
@@ -167,7 +166,7 @@ var imageFactory=(function(){
     image.prototype.initUI=function(json){
         var that=this;
         var imgBox=$("<div/>",{"class":"imgBox"});
-            var img=$("<img/>",{"src":"/photo/"+page.cusInfoId+"/"+that.id+"?type=fill"});
+            var img=$("<img/>",{"src":"/order_photo/"+page.cusInfoId+"/"+page.orderId+"/"+that.id+"?type=fill"});
             var del=$("<i/>",{"class":"delete fa fa-trash-o"});
             var name=$("<div/>",{"class":"nameBox"});
                 name.append(del);
@@ -205,9 +204,12 @@ var ajax_get=function(){
     var cusInfoId=page.cusInfoId;
     $.ajax({
         "type":"post",
-        "url":"/getCustomerImages",
+        "url":"/getOrderImages",
         "datatype":"json",
-        "data":{"cusInfoId":cusInfoId},
+        "data":{
+            "cusInfoId":cusInfoId,
+            "orderId":page.orderId
+        },
         "success":function(json){
             if("sorry"==json.status){alert(json.message);return false;};
             for(var i=0,l=json.data.length;i<l;i++){
@@ -221,9 +223,9 @@ var ajax_get=function(){
 var ajax_deleteImage=function(cusInfoId,fileId,callback){
     $.ajax({
         "type":"post",
-        "url":"/deleteCustomerPhoto",
+        "url":"/deleteOrderPhoto",
         "datatype":"json",
-        "data":{"cusInfoId":cusInfoId,fileId:fileId},
+        "data":{"cusInfoId":cusInfoId,"orderId":page.orderId,fileId:fileId},
         "success":function(json){
             if("sorry"==json.status){alert(json.message);return false;};
             callback();
