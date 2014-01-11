@@ -209,17 +209,27 @@ page.LibBar=(function(){
         var setImage=$("<a/>",{"href":"/b/manage_image/"+page.cusInfoId+"/"+that.orderId,"text":"管理图片"});
         var selectsList=$("<a/>",{"target":"_blank","href":"/b/selects/"+that.orderId,"text":"查看选片"});
         var detail=$("<a/>",{"target":"_blank","href":"/b/order_detail/"+page.cusInfoId+"/"+that.orderId,"text":"订单详情"});
-            var html="<div class='progress'><div class='p1'>待上传</div><div></div><div class='p2'>选片中</div><div class='p3'>待设计</div><div class='p4'>审核中</div><div class='p5'>设计完成</div><div class='p6'>交易完成</div></div>";
+            var htmla="<div class='progress'>"+
+                        "<div class='barBGb'></div>"+
+                        "<div class='barBGa'></div>"+
+                        "<div class='point p1'><span>1</span><div class='tt'>待上传</div></div>"+
+                        "<div class='point p2'><span>2</span><div class='tt'>选片中</div></div>"+
+                        "<div class='point p3'><span>3</span><div class='tt'>待设计</div></div>"+
+                        "<div class='point p4'><span>4</span><div class='tt'>审核中</div></div>"+
+                        "<div class='point p5'><span>5</span><div class='tt'>设计完成</div></div>"+
+                        "<div class='point p6'><span>6</span><div class='tt'>交易完成</div></div>"+
+                    "</div>";
         var box=$("<div/>",{"class":"playBox"});
             box.append(remove,setModle,setImage,selectsList,detail);
-            tage.append(dateUI,html,box);
+            tage.append(dateUI,htmla,box);
             this.bindEvent({
                 setModle:setModle
             });
-            for(var i=1;i<4;i++){
+            for(var i=1;i<6;i++){
                 var temp=tage.find(".p"+i);
-                    temp.addClass("active");
+                    temp.addClass("active").find("span").text("").addClass("fa fa-check-circle");
             }
+                var temp=tage.find(".barBGa").css({"width":2*60+"px"});
     };
     bar.prototype.bindEvent=function(json){
         var that=this;
