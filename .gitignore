@@ -1,0 +1,17 @@
+# editor temp file
+*.tmp
+*.swp
+*.orig
+*~
+
+# Directory-based project format
+.idea/
+
+# File-based project format
+*.ipr
+*.iws
+*.iml
+
+node_modules/*
+!node_modules/.gitignore
+
