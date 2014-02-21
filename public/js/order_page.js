@@ -209,7 +209,7 @@ page.LibBar=(function(){
         var setImage=$("<a/>",{"href":"/b/manage_image/"+page.cusInfoId+"/"+that.orderId,"text":"管理图片"});
         var selectsList=$("<a/>",{"target":"_blank","href":"/b/selects/"+that.orderId,"text":"查看选片"});
         var detail=$("<a/>",{"target":"_blank","href":"/b/order_detail/"+page.cusInfoId+"/"+that.orderId,"text":"订单详情"});
-            var htmla="<div class='progress'>"+
+            var htmla="<div class='do_progress'>"+
                         "<div class='barBGb'></div>"+
                         "<div class='barBGa'></div>"+
                         "<div class='point p1'><span>1</span><div class='tt'>待上传</div></div>"+

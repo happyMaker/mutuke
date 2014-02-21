@@ -166,7 +166,7 @@ var imageFactory=(function(){
         this.initUI(json); 
     }
     image.prototype.insertAnimate=function(){
-        this.body.css({"width":"0px"}).animate({"width":"160px"},1500);
+        this.body.css({"width":"0px"}).animate({"width":"182px"},1500);
     };
     image.prototype.initUI=function(json){
         var that=this;

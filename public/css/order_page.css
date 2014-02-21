@@ -138,14 +138,14 @@
 .orderList li:hover{
     background:#efefef;
 }
-.orderList .progress:hover .tt{
+.orderList .do_progress:hover .tt{
    animation: aniTT.3s;
    -moz-animation: aniTT .3s;
    -webkit-animation: aniTT .3s;
    -o-animation: aniTT .3s;
     display:block;
 }
-.orderList .progress:hover{
+.orderList .do_progress:hover{
    animation: progress .3s;
    -moz-animation: progress .3s;
    -webkit-animation: progress .3s;
@@ -181,21 +181,21 @@
     width:110px;
     padding-left:10px;
 }
-.orderList .progress{
+.orderList .do_progress{
    width:380px; 
-    height:35px;
+    height:40px;
    float:left;
    margin-top:14px;
    position:relative;
 }
-.orderList .progress .point.active{
+.orderList .do_progress .point.active{
     color:#456590;
     background:#fff;
     font-size:20px;
     text-align:center;
 }
-.orderList .progress .barBGa,
-.orderList .progress .barBGb{
+.orderList .do_progress .barBGa,
+.orderList .do_progress .barBGb{
     position:absolute;
     height:10px;
     width:100px; 
@@ -203,12 +203,12 @@
     top: 5px;
     left: 24px;
 }
-.orderList .progress .barBGb{
+.orderList .do_progress .barBGb{
     width:100%;
     width:300px;
     background:#ddd;
 }
-.orderList .progress .tt{
+.orderList .do_progress .tt{
     display:none;
    position:absolute; 
    color:#333;
@@ -217,7 +217,7 @@
    margin-left:-20px;
     font-size:12px;
 }
-.orderList .progress .point{
+.orderList .do_progress .point{
     position:relative;
     z-index:10;
     float:left;
